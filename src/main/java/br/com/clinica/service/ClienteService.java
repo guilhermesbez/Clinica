@@ -26,9 +26,5 @@ public class ClienteService {
 	public void cadastrar(@Valid ClienteFormDto clienteFormDto) {
 		Cliente cadastroCliente = modelMapper.map(clienteFormDto, Cliente.class);
 		listCadastroCliente.add(cadastroCliente);
-
 	}
-
-
-
 }
