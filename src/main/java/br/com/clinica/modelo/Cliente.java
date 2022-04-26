@@ -2,6 +2,14 @@ package br.com.clinica.modelo;
 
 import java.time.LocalDate;
 
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,22 +21,29 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+@Entity
 public class Cliente {
 
-	private long codigo;
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	private Long codigo;
 	private String nome;
-	private long numeroCnpjCpf;
+	private Integer numeroCnpjCpf;
 	private String estado;
-	private String cidade;
 	private String bairro;
 	private String endereco;
-	private long numeroEndereco;
-	private long cep;
-	private long cel;
+	private Integer numeroEndereco;
+	private Integer cep;
+	private Integer cel;
 	private LocalDate dataNascimento;
 	private String obs;
+	
+		
 	private SexoCliente sexo;
+	@Enumerated(EnumType.STRING)
 	private TipoPessoaCliente tipoPessoaCliente;
-	private Cidade cadastroCidade;
+	
+	@ManyToOne
+	private Cidade cidade;
 	
 }
