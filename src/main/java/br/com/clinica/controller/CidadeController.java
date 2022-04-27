@@ -11,24 +11,24 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.clinica.dto.ClienteDto;
-import br.com.clinica.dto.ClienteFormDto;
-import br.com.clinica.service.ClienteService;
+import br.com.clinica.dto.CidadeDto;
+import br.com.clinica.dto.CidadeFormDto;
+import br.com.clinica.service.CidadeService;
 
 @RestController
-@RequestMapping("/cadastrocliente")
-public class ClienteController {
-
+@RequestMapping("/cadastrocidade")
+public class CidadeController {
+	
 	@Autowired
-	private ClienteService clienteService;
-
+	private CidadeService cidadeService;
+	
 	@GetMapping
-	public List<ClienteDto> listar() {
-		return clienteService.listar();
+	public List<CidadeDto> listar() {
+		return cidadeService.listar();
 	}
-
+	
 	@PostMapping
-	public void cadastrar(@RequestBody @Valid ClienteFormDto clienteFormDto) {
-		clienteService.cadastrar(clienteFormDto);
+	public void cadastrar(@RequestBody @Valid CidadeFormDto cidadeFormDto) {
+		cidadeService.cadastrar(cidadeFormDto);
 	}
 }

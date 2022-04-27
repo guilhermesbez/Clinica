@@ -8,7 +8,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Size;
 
-import br.com.clinica.modelo.Cidade;
+import com.fasterxml.jackson.annotation.JsonAlias;
+
 import br.com.clinica.modelo.SexoCliente;
 import br.com.clinica.modelo.TipoPessoaCliente;
 import lombok.Getter;
@@ -18,27 +19,28 @@ import lombok.Setter;
 @Setter
 public class ClienteFormDto {
 	
-	private long codigo;
 	@NotBlank
 	private String nome;
 	@DecimalMin("9")
 	@NotNull
-	private long numeroCnpjCpf;
+	private Integer numeroCnpjCpf;
 	@NotBlank
 	private String estado;
-	@NotBlank
-	private String cidade;
 	private String bairro;
 	private String endereco;
-	private long numeroEndereco;
-	private long cep;
+	private Integer numeroEndereco;
+	private Integer cep;
 	@NotNull
-	private long cel;
+	private Integer celular;
 	@PastOrPresent
 	private LocalDate dataNascimento;
 	@Size(max = 250)
 	private String obs;
+	@NotNull
 	private SexoCliente sexo;
+	@NotNull
 	private TipoPessoaCliente tipoPessoaCliente;
-	private Cidade cadastroCidade;
+	
+	@JsonAlias("cidade_codigo")
+	private Long cidadeCodigo;
 }

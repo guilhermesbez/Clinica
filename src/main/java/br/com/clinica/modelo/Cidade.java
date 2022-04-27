@@ -24,5 +24,4 @@ public class Cidade {
 	private Long codigo;
 	private Integer codigoIbge;
 	private String nomeCidade;
-	
 }

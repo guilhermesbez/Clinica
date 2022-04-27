@@ -30,6 +30,5 @@ public class UsuarioController {
 	@PostMapping
 	public void cadastrar(@RequestBody @Valid UsuarioFormDto usuarioFormDto) {
 		usuarioService.cadastrar(usuarioFormDto);
-	}
-	
+	}	
 }

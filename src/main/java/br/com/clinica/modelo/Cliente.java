@@ -34,16 +34,16 @@ public class Cliente {
 	private String endereco;
 	private Integer numeroEndereco;
 	private Integer cep;
-	private Integer cel;
+	private Integer celular;
 	private LocalDate dataNascimento;
 	private String obs;
 	
-		
+	@Enumerated(EnumType.STRING)	
 	private SexoCliente sexo;
 	@Enumerated(EnumType.STRING)
 	private TipoPessoaCliente tipoPessoaCliente;
 	
 	@ManyToOne
-	private Cidade cidade;
+	private Cidade cidadeCodigo;
 	
 }
