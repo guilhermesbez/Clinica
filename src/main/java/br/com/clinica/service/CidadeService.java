@@ -1,12 +1,12 @@
 package br.com.clinica.service;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import br.com.clinica.dto.CidadeDto;
@@ -21,14 +21,14 @@ public class CidadeService {
 	private CidadeRepository cidadeRepository;
 	private ModelMapper modelMapper = new ModelMapper();
 
-	public List<CidadeDto> listar() {
-		List<Cidade> listCidade = cidadeRepository.findAll();
-		return listCidade.stream().map(t -> modelMapper.map(t, CidadeDto.class)).collect(Collectors.toList());
+	public Page<CidadeDto> listar(Pageable paginacao) {
+		Page<Cidade> listCidade = cidadeRepository.findAll(paginacao);
+		return listCidade.map(t -> modelMapper.map(t, CidadeDto.class));
 	}
 
+	@Transactional
 	public void cadastrar(@Valid CidadeFormDto cidadeFormDto) {
 		Cidade cidade = modelMapper.map(cidadeFormDto, Cidade.class);
-		
 		cidadeRepository.save(cidade);		
 	}
 

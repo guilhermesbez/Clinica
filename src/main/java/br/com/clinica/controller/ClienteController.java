@@ -1,10 +1,10 @@
 package br.com.clinica.controller;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,8 +23,8 @@ public class ClienteController {
 	private ClienteService clienteService;
 
 	@GetMapping
-	public List<ClienteDto> listar() {
-		return clienteService.listar();
+	public Page<ClienteDto> listar(Pageable paginacao) {
+		return clienteService.listar(paginacao);
 	}
 
 	@PostMapping
